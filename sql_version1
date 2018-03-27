@@ -1,0 +1,65 @@
+
+-- 요가 멤버 테이블 생성
+create table yoga_member(
+	id varchar2(50) primary key,
+	password varchar2(50) not null,
+	name varchar2(50) not null,
+	phone_number int not null,
+	address varchar2(100),
+	email varchar2(100) not null,
+	password_hint varchar2(100) not null,
+	reg_date date not null,
+	password_question varchar2(100) not null
+)
+
+-- 관리자
+insert into YOGA_MEMBER values('admin','1234','관리자',01012345678,'경기도 이천시','admin@kosta.co.kr','힌트',sysdate,'힌트_답')
+-- 비회원
+insert into YOGA_MEMBER values('visitor','1234','비회원',01012345679,'서울시 구의동','visitor@kosta.co.kr','힌트',sysdate,'힌트_답')
+-- 일반회원
+insert into YOGA_MEMBER values('jeKim','1234','김지은',01012345680,'전북 익산','jeKim@kosta.co.kr','힌트',sysdate,'힌트_답')
+
+select * from YOGA_MEMBER
+
+
+-- 요가 강사 테이블 생성
+create table yoga_teacher(
+	teacherId int primary key,
+	teacherName varchar(50) not null,
+	teacherNick varchar(50) not null,
+	teacherProfile varchar(600)
+)
+-- teacherId 시퀀스 생성
+create sequence tchNo_seq;
+
+-- 요가 프로그램 테이블 생성
+create table yoga_subject(
+	subjectNo int primary key,
+	subjectName varchar(50) not null,
+	subjectDetail varchar(50)
+)
+-- subjectNo 시퀀스 생성
+create sequence subNo_seq;
+
+-- 요가 강좌 테이블 생성
+create table yoga_class(
+	classNo int primary key,
+	teacherId int not null,
+	subjectNo int not null,
+	classTime date,
+	classDay date,
+	constraint fk_teacherId foreign key(teacherId) references YOGA_TEACHER,
+	constraint fk_subjectNo foreign key(subjectNo) references yoga_subject
+)
+-- classNo 시퀀스 생성
+create sequence class_seq;
+
+
+
+
+
+
+
+
+
+
