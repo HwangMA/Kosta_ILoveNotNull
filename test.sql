@@ -5,7 +5,8 @@ create table class(
 	className VARCHAR2(100) NOT NULL,
 	teacherName VARCHAR2(100) NOT NULL,
 	dateOfWeek NUMBER NOT NULL,
-	timeOfClass VARCHAR2(100) NOT NULL
+	timeOfClass VARCHAR2(100) NOT NULL,
+	capacity NUMBER NOT NULL                     //  추가된 사항 : 1
 )
 
 create table member(
@@ -19,6 +20,7 @@ create table member(
 create table registerStatus(
 	classNo NUMBER,
 	id VARCHAR2(100),
+	registerTime DATE NOT NULL,                      //  추가된 사항 : 2
 	constraint fk_class foreign key(classNo) references class(classNo),
 	constraint fk_member foreign key(id) references member(id),
 	constraint pk_registerStatus primary key(classNo,id)
@@ -75,8 +77,6 @@ values(class_seq.nextVal, 'BALL THERAPHY','YOON MI',3,'6');
 insert into class(classNO, className, teacherName, dateOfWeek, timeOfClass) 
 values(class_seq.nextVal, 'HASHA','SH',4,'1');
 
-
-select className, teacherName from class where timeOfClass=2 order by dateOfWeek asc
 
 
 
