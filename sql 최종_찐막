@@ -3,7 +3,7 @@ create table yoga_member(
 	password varchar2(50) not null,
 	name varchar2(50) not null,
 	phone_number NUMBER not null,
-	address varchar2(100),
+	address varchar2(100) not null,
 	email varchar2(100) not null,
 	password_hint varchar2(100) not null,
 	reg_date date not null,
@@ -13,9 +13,10 @@ create table yoga_member(
 -- 요가 강사 테이블 생성
 create table yoga_teacher(
 	teacherId NUMBER primary key,
-	teacherName varchar(50) not null,
-	teacherNick varchar(50) not null,
-	teacherProfile varchar(600)
+	teacherName varchar2(50) not null,
+	teacherNick varchar2(50) not null,
+	teacherProfile varchar2(600),
+	mg_url varchar2(100)
 )
 -- teacherId 시퀀스 생성
 create sequence tchNo_seq;
@@ -23,8 +24,8 @@ create sequence tchNo_seq;
 -- 요가 프로그램 테이블 생성
 create table yoga_subject(
 	subjectNo NUMBER primary key,
-	subjectName varchar(50) not null,
-	subjectDetail varchar(50)
+	subjectName varchar2(50) not null,
+	subjectDetail varchar2(50)
 )
 -- subjectNo 시퀀스 생성
 create sequence subNo_seq;
@@ -34,8 +35,8 @@ create table yoga_class(
 	classNo NUMBER primary key,
 	teacherId NUMBER not null,
 	subjectNo NUMBER not null,
-	classTime date,
-	classDay date,
+	classTime date not null,
+	classDay date not null,
 	capacity NUMBER not null,
 	constraint fk_teacherId foreign key(teacherId) references YOGA_TEACHER,
 	constraint fk_subjectNo foreign key(subjectNo) references yoga_subject
