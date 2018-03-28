@@ -16,7 +16,7 @@ create table yoga_teacher(
 	teacherName varchar2(50) not null,
 	teacherNick varchar2(50) not null,
 	teacherProfile varchar2(600),
-	mg_url varchar2(100)
+	img_url varchar2(100)
 )
 -- teacherId 시퀀스 생성
 create sequence tchNo_seq;
