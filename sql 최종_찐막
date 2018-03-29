@@ -53,6 +53,15 @@ create table registerStatus(
 )
 
 
+create table POST(
+	postNo NUMBER primary key,
+	title varchar2(100) not null,
+	content clob not null,
+	id varchar2(50) not null,
+	regDate date not null,
+	constraint fk_post2 foreign key(id) references yoga_member(id)
+)
 
+drop table POST
 
 
