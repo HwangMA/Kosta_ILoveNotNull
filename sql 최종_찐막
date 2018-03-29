@@ -48,7 +48,7 @@ create table registerStatus(
 	classNo NUMBER,
 	id VARCHAR2(100),
 	constraint fk_class foreign key(classNo) references class(classNo),
-	constraint fk_member foreign key(id) references member(id),
+	constraint fk_yoga_member foreign key(id) references yoga_member(id),
 	constraint pk_registerStatus primary key(classNo,id)
 )
 
