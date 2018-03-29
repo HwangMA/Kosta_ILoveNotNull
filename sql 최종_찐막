@@ -52,7 +52,7 @@ create table registerStatus(
 	constraint pk_registerStatus primary key(classNo,id)
 )
 
-
+create sequence post_seq; //postNo 생성
 create table POST(
 	postNo NUMBER primary key,
 	title varchar2(100) not null,
