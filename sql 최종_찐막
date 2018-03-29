@@ -5,8 +5,8 @@ create table yoga_member(
 	phone_number NUMBER not null,
 	address varchar2(100) not null,
 	email varchar2(100) not null,
-	password_hint varchar2(100) not null,
-	reg_date date not null,
+	password_answer varchar2(100) not null,
+	regDate date not null,
 	password_question varchar2(100) not null
 )
 
@@ -22,7 +22,7 @@ create table yoga_teacher(
 create sequence tchNo_seq;
 
 -- 요가 프로그램 테이블 생성
-create table yoga_subject(
+create table yoga_program(
 	subjectNo NUMBER primary key,
 	subjectName varchar2(50) not null,
 	subjectDetail varchar2(50)
@@ -47,7 +47,7 @@ create sequence class_seq;
 create table registerStatus(
 	classNo NUMBER,
 	id VARCHAR2(100),
-	constraint fk_class foreign key(classNo) references class(classNo),
+	constraint fk_class foreign key(classNo) references yoga class(classNo),
 	constraint fk_yoga_member foreign key(id) references yoga_member(id),
 	constraint pk_registerStatus primary key(classNo,id)
 )
@@ -63,5 +63,3 @@ create table POST(
 )
 
 drop table POST
-
-
