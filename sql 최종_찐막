@@ -1,4 +1,4 @@
-create table yoga_student(
+create table yoga_member(
 	id varchar2(50) primary key,
 	password varchar2(50) not null,
 	name varchar2(50) not null,
